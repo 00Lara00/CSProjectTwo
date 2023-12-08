@@ -14,6 +14,9 @@ messagebox.showinfo('TicTacToe','X Starts' )
 x_win = 0
 o_win = 0
 
+"""
+disables buttons; makes sure they are selected at start of game
+"""
 
 def disable_buttons():
     spot_one.config(state=DISABLED)
@@ -26,6 +29,9 @@ def disable_buttons():
     spot_eight.config(state=DISABLED)
     spot_nine.config(state=DISABLED)
 
+"""
+Checks for game winner
+"""
 
 def win_calculation():
     global winner
@@ -106,7 +112,9 @@ def win_calculation():
         x_win += 1
         messagebox.showinfo('TicTacToe', 'Player X wins!')
         disable_buttons()
-
+"""
+Checks for O winner
+"""
 
     if spot_one['text'] == 'O' and spot_two['text'] == 'O' and spot_three['text'] == 'O':
         global o_win
@@ -180,11 +188,16 @@ def win_calculation():
         o_win += 1
         messagebox.showinfo('TicTacToe', 'Player O wins!')
         disable_buttons()
-
+"""
+Checks for tie
+"""
     if count == 9 and winner == False:
         messagebox.showinfo('TicTacToe', 'Game has ended in a tie')
         disable_buttons()
 
+"""
+Assigns X or O to button clicked
+"""
 
 def button_click(button):
     global clicked, count
@@ -201,6 +214,9 @@ def button_click(button):
     else:
         messagebox.showerror("TicTacToe", 'Spot has been selected, choose a different spot')
 
+"""
+Resets the game 
+"""
 
 def reset():
     global spot_one, spot_two, spot_three, spot_four, spot_five, spot_six, spot_seven, spot_eight, spot_nine
@@ -234,6 +250,9 @@ def reset():
                        command=lambda: button_click(spot_nine))
     spot_nine.grid(row=2, column=2)
 
+"""
+Sets up the menu of the game
+"""
 
 menu = Menu(base)
 base.config(menu=menu)
